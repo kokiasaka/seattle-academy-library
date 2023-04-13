@@ -35,7 +35,7 @@ public class BooksService {
 		
 		
 		List<BookInfo> getedBookList = jdbcTemplate.query(
-				"SELECT id, title, author, publisher, publish_date, isbn, description, thumbnail_url, thumbnail_name FROM books ORDER BY title ASC",
+				"SELECT id, title, author, publisher, publish_date, isbn, description, thumbnail_url, thumbnail_name, reg_date, upd_date FROM books ORDER BY title ASC",
 				new BookInfoRowMapper());
 		
 		
