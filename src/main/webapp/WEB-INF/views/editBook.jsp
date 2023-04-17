@@ -29,7 +29,7 @@
         </div>
     </header>
     <main>
-        <form action="<%=request.getContextPath()%>/"updatebook method="post" enctype="multipart/form-data" id="data_upload_form">
+        <form action="<%=request.getContextPath()%>/updateBook" method="post" enctype="multipart/form-data" id="data_upload_form">
             <h1>書籍の編集</h1>
             <div class="content_body add_book_content">
                 <div>
@@ -53,24 +53,20 @@
                                 </c:forEach>
                             </div>
                         </c:if>
-                        <span>書籍名</span><span class="care care2">必須</span>
-                            <input type="text" name="title" value="${bookInfo.title}">  
+                        <span>書籍名</span><span class="care care2">必須</span> <input type="text" name="title" value="${bookInfo.title}">
                     </div>
                     <div>
-                        <span>著者名</span><span class="care care2">必須</span>
-                            <input type="text" name="author" value="${bookInfo.author}">
+                        <span>著者名</span><span class="care care2">必須</span> <input type="text" name="author" value="${bookInfo.author}">
                     </div>
                     <div>
-                        <span>出版社</span><span class="care care2">必須</span>
-                            <input type="text" name="publisher" value="${bookInfo.publisher}">
+                        <span>出版社</span><span class="care care2">必須</span> <input type="text" name="publisher" value="${bookInfo.publisher}">
                     </div>
                     <div>
-                        <span>出版日</span><span class="care care2">必須</span>
-                            <input type="text" name="publishDate" value="${bookInfo.publishDate}">
+                        <span>出版日</span><span class="care care2">必須</span> <input type="text" name="publishDate" value="${bookInfo.publishDate}">
                     </div>
                     <div>
                         <span>ISBN</span><span class="care care1">任意</span>
-                         <c:if test="${!empty bookInfo}">
+                        <c:if test="${!empty bookInfo}">
                             <input type="text" name="isbn" value="${bookInfo.isbn}">
                         </c:if>
                         <c:if test="${empty bookInfo}">
@@ -90,12 +86,10 @@
                 </div>
             </div>
             <div class="bookBtn_box">
-                <button type="submit" id="add-btn" class="btn_updateBook">更新</button>    
+                <button type="submit" id="add-btn" class="btn_updateBook">更新</button>
         </form>
-        		<form method="post" action="deleteBook" name="delete">
-
- 				</form>
- 			</div>      
+        <form method="post" action="deleteBook" name="delete"></form>
+        </div>
     </main>
 </body>
 </html>
