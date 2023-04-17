@@ -33,7 +33,7 @@ public class BooksService {
 
 		// TODO 書籍名の昇順で書籍情報を取得するようにSQLを修正（タスク３）
 		List<BookInfo> getedBookList = jdbcTemplate.query(
-				"",
+				"SELECT id, title, author, publisher, publish_date, isbn, description, thumbnail_url, thumbnail_name, reg_date, upd_date FROM books ORDER BY title ASC",
 				new BookInfoRowMapper());
 
 		return getedBookList;
@@ -89,12 +89,12 @@ public class BooksService {
 		String sql;
 		if (bookInfo.getThumbnailUrl() == null) {
 			// TODO 取得した書籍情報を更新するようにSQLを修正（タスク５）
-			sql = "";
+			sql = "UPDATE books SET title,author,publisher,publise_date,isbn,description,thumbnail_name,upd_date = ?,?,?,?,?,?,?,now() WHERE id=?;";
 			jdbcTemplate.update(sql, bookInfo.getTitle(), bookInfo.getAuthor(), bookInfo.getPublisher(),
 					bookInfo.getPublishDate(), bookInfo.getIsbn(), bookInfo.getDescription(), bookInfo.getBookId());
 		} else {
 			// TODO 取得した書籍情報を更新するようにSQLを修正（タスク５）
-			sql = "";
+			sql = "UPDATE books SET title,author,publisher,publise_date,isbn,description,thumbnail_url,thumbnail_name,reg_date,upd_date = ?,?,?,?,?,?,?,? now() WHERE id=?;";
 			jdbcTemplate.update(sql, bookInfo.getTitle(), bookInfo.getAuthor(), bookInfo.getPublisher(),
 					bookInfo.getPublishDate(), bookInfo.getThumbnailName(), bookInfo.getThumbnailUrl(),
 					bookInfo.getIsbn(), bookInfo.getDescription(), bookInfo.getBookId());
