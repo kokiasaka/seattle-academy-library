@@ -69,7 +69,6 @@
                     </div>
                     <div>
                         <span>説明文</span><span class="care care1">任意</span> <input type="text" name="description" value="${bookInfo.description}"> <input type="text" name="description">
-                        </c:if>
                     </div>
                     <input type="hidden" id="bookId" name="bookId" value="${bookInfo.bookId}">
                 </div>
