@@ -62,7 +62,10 @@ public class BooksService {
 	 */
 	public int registBook(BookDetailsInfo bookInfo) {
 		// TODO 取得した書籍情報を登録し、その書籍IDを返却するようにSQLを修正（タスク４）
-		String sql = "";
+		String sql = "INSERT INTO books(title, author, publisher, publish_date, thumbnail_name, thumbnail_url,isbn, description, reg_date, upd_date)VALUES(?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW()) RETURNING id;";
+
+				
+				
 
 		int bookId = jdbcTemplate.queryForObject(sql, int.class, bookInfo.getTitle(), bookInfo.getAuthor(),
 				bookInfo.getPublisher(), bookInfo.getPublishDate(), bookInfo.getThumbnailName(),
@@ -77,7 +80,7 @@ public class BooksService {
 	 */
 	public void deleteBook(int bookId) {
 		// TODO 対象の書籍を削除するようにSQLを修正（タスク6）
-		String sql = "";
+		String sql = "DELETE FROM books WHERE books.id = ?;";
 		jdbcTemplate.update(sql, bookId);
 	}
 
