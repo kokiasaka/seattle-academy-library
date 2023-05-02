@@ -31,6 +31,11 @@
             <c:if test="${!empty resultMessage}">
                 <div class="error_msg">${resultMessage}</div>
             </c:if>
+            <form action="search" method="get">
+                <input type="search" name="searches"
+                    placeholder="キーワードを入力">
+ 　　　　　　　　　　　<input type="submit" value="検索">
+　　　　　　　</form>
             <div>
                 <div class="booklist">
                     <c:forEach var="bookInfo" items="${selectedBookInfo}">

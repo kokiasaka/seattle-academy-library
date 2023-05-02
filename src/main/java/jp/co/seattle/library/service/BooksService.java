@@ -64,9 +64,6 @@ public class BooksService {
 		// TODO 取得した書籍情報を登録し、その書籍IDを返却するようにSQLを修正（タスク４）
 		String sql = "INSERT INTO books(title, author, publisher, publish_date, thumbnail_name, thumbnail_url,isbn, description, reg_date, upd_date)VALUES(?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW()) RETURNING id;";
 
-				
-				
-
 		int bookId = jdbcTemplate.queryForObject(sql, int.class, bookInfo.getTitle(), bookInfo.getAuthor(),
 				bookInfo.getPublisher(), bookInfo.getPublishDate(), bookInfo.getThumbnailName(),
 				bookInfo.getThumbnailUrl(), bookInfo.getIsbn(), bookInfo.getDescription());
@@ -103,5 +100,14 @@ public class BooksService {
 					bookInfo.getPublishDate(), bookInfo.getThumbnailName(), bookInfo.getThumbnailUrl(),
 					bookInfo.getIsbn(), bookInfo.getDescription(), bookInfo.getBookId());
 		}
+
+	}
+
+	public List<BookInfo> searched(String searches) {
+		// TODO 書籍名の昇順で書籍情報を取得するようにSQLを修正
+		List<BookInfo> mina = jdbcTemplate.query(
+				"SELECT * FROM books WHERE title LIKE concat('%',?,'%') ORDER BY title ASC",
+				new BookInfoRowMapper(),searches);
+		return mina;
 	}
 }

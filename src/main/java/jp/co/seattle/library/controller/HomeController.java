@@ -1,6 +1,7 @@
 package jp.co.seattle.library.controller;
 
 import java.util.List;
+import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jp.co.seattle.library.dto.BookInfo;
 import jp.co.seattle.library.service.BooksService;
@@ -37,4 +39,11 @@ public class HomeController {
 		return "home";
 	}
 
+
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String searching(Locale locale,@RequestParam("searches") String searches,Model model) {
+	List<BookInfo> searchsearch = booksService.searched(searches);
+		model.addAttribute("selectedBookInfo", searchsearch);
+		return "home";
+	}
 }
