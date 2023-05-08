@@ -107,7 +107,36 @@ public class BooksService {
 		// TODO 書籍名の昇順で書籍情報を取得するようにSQLを修正
 		List<BookInfo> mina = jdbcTemplate.query(
 				"SELECT * FROM books WHERE title LIKE concat('%',?,'%') ORDER BY title ASC",
-				new BookInfoRowMapper(),searches);
+				new BookInfoRowMapper(), searches);
 		return mina;
+	}
+
+	public List<BookInfo> sortBookListAsc() {
+		List<BookInfo> getedBookList = jdbcTemplate.query(
+				"SELECT * FROM books ORDER BY title ASC",
+				new BookInfoRowMapper());
+
+		return getedBookList;
+	}
+	public List<BookInfo> sortBookListDesc() {
+		List<BookInfo> getedBookList = jdbcTemplate.query(
+				"SELECT * FROM books ORDER BY title DESC",
+				new BookInfoRowMapper());
+
+		return getedBookList;
+	}
+	public List<BookInfo> sortBookListAuthor() {
+		List<BookInfo> getedBookList = jdbcTemplate.query(
+				"SELECT * FROM books ORDER BY author ASC",
+				new BookInfoRowMapper());
+
+		return getedBookList;
+	}
+	public List<BookInfo> sortBookListDate() {
+		List<BookInfo> getedBookList = jdbcTemplate.query(
+				"SELECT * FROM books ORDER BY publish_date ASC",
+				new BookInfoRowMapper());
+
+		return getedBookList;
 	}
 }

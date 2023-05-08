@@ -26,16 +26,15 @@
     </header>
     <main>
         <h1>Home</h1>
-        <a href="<%=request.getContextPath()%>/addBook" class="btn_add_book">書籍の追加</a>
+        <a href="<%=request.getContextPath()%>/addBook" class="btn_add_book">書籍の追加</a> <a href="<%=request.getContextPath()%>/sortAsc" class="btn_add_book">昇順</a> <a href="<%=request.getContextPath()%>/sortDesc" class="btn_add_book">降順</a> <a href="<%=request.getContextPath()%>/sortAuthor" class="btn_add_book">著者名順</a> <a href="<%=request.getContextPath()%>/sortPublishDate" class="btn_add_book">出版日最新順</a>
         <div class="content_body">
             <c:if test="${!empty resultMessage}">
                 <div class="error_msg">${resultMessage}</div>
             </c:if>
             <form action="search" method="get">
-                <input type="search" name="searches"
-                    placeholder="キーワードを入力">
- 　　　　　　　　　　　<input type="submit" value="検索">
-　　　　　　　</form>
+                <input type="search" name="searches" placeholder="キーワードを入力"> <input type="submit" value="検索">
+            </form>
+            <input type="button" onclick="location.href='https://www.amazon.co.jp/gp/bestsellers/books/ref=zg_bs_nav_0'" value="Amazon売れ筋ランキング">
             <div>
                 <div class="booklist">
                     <c:forEach var="bookInfo" items="${selectedBookInfo}">
@@ -54,9 +53,10 @@
                                 <li class="book_publisher">出版社:${bookInfo.publisher}</li>
                                 <li class="book_publish_date">出版日:${bookInfo.publishDate}</li>
                             </ul>
-                        </div>
-                    </c:forEach>
-                </div>
+                            <input type="button" onclick="location.href='https://www.amazon.co.jp/s?k=${bookInfo.title}&ref=nb_sb_noss'" value="購入">
+                        </div></c:forEach>
+        
+                    </div>
             </div>
         </div>
     </main>

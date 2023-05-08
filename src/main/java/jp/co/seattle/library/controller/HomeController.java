@@ -39,11 +39,35 @@ public class HomeController {
 		return "home";
 	}
 
-
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public String searching(Locale locale,@RequestParam("searches") String searches,Model model) {
-	List<BookInfo> searchsearch = booksService.searched(searches);
+	public String searching(Locale locale, @RequestParam("searches") String searches, Model model) {
+		List<BookInfo> searchsearch = booksService.searched(searches);
 		model.addAttribute("selectedBookInfo", searchsearch);
+		return "home";
+	}
+
+	@RequestMapping(value = "/sortAsc", method = RequestMethod.GET)
+	public String sortBookAsc(Model model) {
+		List<BookInfo> selectedBookInfo = booksService.sortBookListAsc();
+		model.addAttribute("selectedBookInfo", selectedBookInfo);
+		return "home";
+	}
+	@RequestMapping(value = "/sortDesc", method = RequestMethod.GET)
+	public String sortBookDesc(Model model) {
+		List<BookInfo> selectedBookInfo = booksService.sortBookListDesc();
+		model.addAttribute("selectedBookInfo", selectedBookInfo);
+		return "home";
+	}
+	@RequestMapping(value = "/sortAuthor", method = RequestMethod.GET)
+	public String sortBookAuthor(Model model) {
+		List<BookInfo> selectedBookInfo = booksService.sortBookListAuthor();
+		model.addAttribute("selectedBookInfo", selectedBookInfo);
+		return "home";
+	}
+	@RequestMapping(value = "/sortPublishDate", method = RequestMethod.GET)
+	public String sortBookDate(Model model) {
+		List<BookInfo> selectedBookInfo = booksService.sortBookListDate();
+		model.addAttribute("selectedBookInfo", selectedBookInfo);
 		return "home";
 	}
 }

@@ -68,7 +68,7 @@
                         <span>ISBN</span><span class="care care1">任意</span> <input type="text" name="isbn" value="${bookInfo.isbn}">
                     </div>
                     <div>
-                        <span>説明文</span><span class="care care1">任意</span> <input type="text" name="description" value="${bookInfo.description}"> <input type="text" name="description">
+                        <span>説明文</span><span class="care care1">任意</span> <input type="text" name="description" value="${bookInfo.description}">
                     </div>
                     <input type="hidden" id="bookId" name="bookId" value="${bookInfo.bookId}">
                 </div>
@@ -76,13 +76,11 @@
             <div class="bookBtn_box">
                 <button type="submit" id="add-btn" class="btn_updateBook">更新</button>
         </form>
-        		<form method="post" action="deleteBook" name="delete">
-                 <input type="hidden" id="bookId" name="bookId" value="${bookInfo.bookId}">
-                  <button type="submit" id="delete-btn" class="btn_deleteBook">削除</button>    
-                  
-
- 				</form>
- 			</div>      
+        <form method="post" action="deleteBook" name="delete">
+            <input type="hidden" id="bookId" name="bookId" value="${bookInfo.bookId}">
+            <button type="submit" id="delete-btn" class="btn_deleteBook">削除</button>
+        </form>
+        </div>
     </main>
 </body>
 </html>
