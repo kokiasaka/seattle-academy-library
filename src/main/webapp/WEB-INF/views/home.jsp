@@ -32,9 +32,8 @@
                 <div class="error_msg">${resultMessage}</div>
             </c:if>
             <form action="search" method="get">
-                <input type="search" name="searches" placeholder="キーワードを入力"> <input type="submit" value="検索">
+                <input type="search" name="searches" placeholder="キーワードを入力"> <input type="submit" value="検索"> <input type="button" onclick="location.href='https://www.amazon.co.jp/gp/bestsellers/books/ref=zg_bs_nav_0'" value="Amazon売れ筋ランキング">
             </form>
-            <input type="button" onclick="location.href='https://www.amazon.co.jp/gp/bestsellers/books/ref=zg_bs_nav_0'" value="Amazon売れ筋ランキング">
             <div>
                 <div class="booklist">
                     <c:forEach var="bookInfo" items="${selectedBookInfo}">
@@ -54,9 +53,9 @@
                                 <li class="book_publish_date">出版日:${bookInfo.publishDate}</li>
                             </ul>
                             <input type="button" onclick="location.href='https://www.amazon.co.jp/s?k=${bookInfo.title}&ref=nb_sb_noss'" value="購入">
-                        </div></c:forEach>
-        
-                    </div>
+                        </div>
+                    </c:forEach>
+                </div>
             </div>
         </div>
     </main>
