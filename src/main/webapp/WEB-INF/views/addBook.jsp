@@ -101,6 +101,15 @@
                             <input type="text" name="description">
                         </c:if>
                     </div>
+                    <p>
+                        <span>ジャンルの選択</span>
+                <select name="genre" value="${bookInfo.genre}">
+                    <option value="sortManga">漫画</option>
+                    <option value="sortSyosetu">小説</option>
+                    <option value="sortBusiness">ビジネス</option>
+                    <option value="sortComputer">IT・コンピューター</option>
+                </select>
+            </p>
                     <input type="hidden" id="bookId" name="bookId" value="${bookInfo.bookId}">
                 </div>
             </div>
