@@ -34,7 +34,7 @@ public class BooksService {
 		// TODO 書籍名の昇順で書籍情報を取得するようにSQLを修正（タスク３）
 
 		List<BookInfo> getedBookList = jdbcTemplate.query(
-				"SELECT id, title, author, publisher, publish_date, isbn, description, thumbnail_url, thumbnail_name, reg_date, upd_date FROM books ORDER BY title ASC",
+				"SELECT id, title, author, publisher, publish_date, isbn, description, thumbnail_url, thumbnail_name, reg_date, upd_date,favorite FROM books ORDER BY title ASC",
 				new BookInfoRowMapper());
 
 		return getedBookList;
@@ -47,7 +47,7 @@ public class BooksService {
 	 * @return 書籍情報
 	 */
 	public BookDetailsInfo getBookInfo(int bookId) {
-		String sql = "SELECT id, title, author, publisher, publish_date, isbn, description, thumbnail_url, thumbnail_name FROM books WHERE books.id = ? ORDER BY title ASC;";
+		String sql = "SELECT id, title, author, publisher, publish_date, isbn, description, thumbnail_url, thumbnail_name,favorite FROM books WHERE books.id = ? ORDER BY title ASC;";
 
 		BookDetailsInfo bookDetailsInfo = jdbcTemplate.queryForObject(sql, new BookDetailsInfoRowMapper(), bookId);
 
@@ -62,11 +62,11 @@ public class BooksService {
 	 */
 	public int registBook(BookDetailsInfo bookInfo) {
 		// TODO 取得した書籍情報を登録し、その書籍IDを返却するようにSQLを修正（タスク４）
-		String sql = "INSERT INTO books(title, author, publisher, publish_date, thumbnail_name, thumbnail_url,isbn, description, reg_date, upd_date)VALUES(?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW()) RETURNING id;";
+		String sql = "INSERT INTO books(title, author, publisher, publish_date, thumbnail_name, thumbnail_url,isbn, description, reg_date, upd_date,favorite)VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW()) RETURNING id;";
 
 		int bookId = jdbcTemplate.queryForObject(sql, int.class, bookInfo.getTitle(), bookInfo.getAuthor(),
 				bookInfo.getPublisher(), bookInfo.getPublishDate(), bookInfo.getThumbnailName(),
-				bookInfo.getThumbnailUrl(), bookInfo.getIsbn(), bookInfo.getDescription());
+				bookInfo.getThumbnailUrl(), bookInfo.getIsbn(), bookInfo.getDescription(), bookInfo.getFavorite());
 		return bookId;
 	}
 
@@ -111,32 +111,93 @@ public class BooksService {
 		return mina;
 	}
 
-	public List<BookInfo> sortBookListAsc() {
+	/*public List<BookInfo> sortBookListAsc() {
 		List<BookInfo> getedBookList = jdbcTemplate.query(
 				"SELECT * FROM books ORDER BY title ASC",
 				new BookInfoRowMapper());
-
+	
 		return getedBookList;
 	}
 	public List<BookInfo> sortBookListDesc() {
 		List<BookInfo> getedBookList = jdbcTemplate.query(
 				"SELECT * FROM books ORDER BY title DESC",
 				new BookInfoRowMapper());
-
+	
 		return getedBookList;
 	}
 	public List<BookInfo> sortBookListAuthor() {
 		List<BookInfo> getedBookList = jdbcTemplate.query(
 				"SELECT * FROM books ORDER BY author ASC",
 				new BookInfoRowMapper());
-
+	
 		return getedBookList;
 	}
 	public List<BookInfo> sortBookListDate() {
 		List<BookInfo> getedBookList = jdbcTemplate.query(
 				"SELECT * FROM books ORDER BY publish_date ASC",
 				new BookInfoRowMapper());
+	
+		return getedBookList;
+	}*/
+	public List<BookInfo> sortBookListAsc() {
+		// タスク7昇順
+		List<BookInfo> getedBookList = jdbcTemplate.query(
+				"SELECT * FROM books ORDER BY title ASC ",
+				new BookInfoRowMapper());
+		return getedBookList;
+	}
+
+	public List<BookInfo> sortBookListDesc() {
+		// タスク7降順
+		List<BookInfo> getedBookList = jdbcTemplate.query(
+				"SELECT * FROM books ORDER BY title DESC ",
+				new BookInfoRowMapper());
+		return getedBookList;
+	}
+
+	public List<BookInfo> sortBookListAuthor() {
+		// タスク7著者名順
+		List<BookInfo> getedBookList = jdbcTemplate.query(
+				"SELECT * FROM books ORDER BY author ASC ",
+				new BookInfoRowMapper());
+		return getedBookList;
+	}
+
+	public List<BookInfo> sortBookListDate() {
+		// タスク7著者名順
+		List<BookInfo> getedBookList = jdbcTemplate.query(
+				"SELECT * FROM books ORDER BY publish_date ASC ",
+				new BookInfoRowMapper());
 
 		return getedBookList;
 	}
+
+	public List<BookInfo> sortBookListFavorite() {
+		List<BookInfo> getedBookList = jdbcTemplate.query(
+				"SELECT * FROM books WHERE favorite = 1 ORDER BY title  ASC",
+				new BookInfoRowMapper());
+
+		return getedBookList;
+	}
+
+	public void favoriteUp(int bookId) {
+		String sql;
+		sql = "UPDATE books SET favorite = 1 WHERE id = ?;";
+		jdbcTemplate.update(sql, bookId);
+	}
+
+	public void favoriteDown(int bookId) {
+		String sql;
+		sql = "UPDATE books SET favorite = 0 WHERE id = ?;";
+		jdbcTemplate.update(sql, bookId);
+
+	}
+
+	public List<BookInfo> bookingBest() {
+		List<BookInfo> getedBookList = jdbcTemplate.query(
+				"SELECT * FROM books ORDER BY RANDOM() LIMIT 1;",
+				new BookInfoRowMapper());
+		return getedBookList;
+	}
+
 }
