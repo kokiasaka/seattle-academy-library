@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import jp.co.seattle.library.dto.BookDetailsInfo;
-
 @Service
 public class BookUtil {
 	final static Logger logger = LoggerFactory.getLogger(BookUtil.class);
@@ -108,3 +107,4 @@ public class BookUtil {
 		}
 	}
 }
+
