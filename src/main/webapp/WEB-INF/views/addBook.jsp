@@ -108,9 +108,20 @@
                     <option value="sortSyosetu">小説</option>
                     <option value="sortBusiness">ビジネス</option>
                     <option value="sortComputer">IT・コンピューター</option>
+                     <option value="その他">その他</option>
                 </select>
             </p>
                     <input type="hidden" id="bookId" name="bookId" value="${bookInfo.bookId}">
+                    
+                      <div>
+                        <span>レビュー</span><span class="care care1">任意</span>
+                        <c:if test="${!empty bookInfo}">
+                            <input type="text" name="review" value="${bookInfo.review}">
+                        </c:if>
+                        <c:if test="${empty bookInfo}">
+                            <input type="text" name="review">
+                        </c:if>
+                    </div>
                 </div>
             </div>
             <div class="bookBtn_box">

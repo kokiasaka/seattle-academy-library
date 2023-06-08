@@ -33,5 +33,7 @@ public class BookDetailsInfo {
 	private int favorite;
 	
 	private String genre;
+	
+	private String review;
 
 }

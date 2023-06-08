@@ -113,7 +113,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/sort", method = RequestMethod.GET)
-	public String sort(Model model, @RequestParam(name = "sortBook") String sort) {
+	public String sort(Model model, @RequestParam("sortBook") String sort) {
 		if (sort.equals("sortASC")) {
 			List<BookInfo> selectedBookInfo = booksService.sortBookListAsc();
 			model.addAttribute("selectedBookInfo", selectedBookInfo);

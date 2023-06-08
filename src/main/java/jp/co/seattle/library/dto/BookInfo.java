@@ -26,13 +26,15 @@ public class BookInfo {
 	private int favorite;
 	
 	private String genre;
+	
+	private String review;
 
 	public BookInfo() {
 
 	}
 
 	// コンストラクタ
-	public BookInfo(int bookId, String title, String author, String publisher, String publishDate, String thumbnail,int favorite, String genre) {
+	public BookInfo(int bookId, String title, String author, String publisher, String publishDate, String thumbnail,int favorite, String genre,String review) {
 		this.bookId = bookId;
 		this.title = title;
 		this.author = author;
@@ -40,6 +42,7 @@ public class BookInfo {
 		this.publishDate = publishDate;
 		this.thumbnail = thumbnail;
 		this.favorite = favorite;
+		this.review = review;
 	}
 
 }

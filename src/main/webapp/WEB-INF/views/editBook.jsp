@@ -70,7 +70,19 @@
                     <div>
                         <span>説明文</span><span class="care care1">任意</span> <input type="text" name="description" value="${bookInfo.description}">
                     </div>
-                    <input type="hidden" id="bookId" name="bookId" value="${bookInfo.bookId}">
+                    <div>
+                        <span>レビュー</span><span class="care care1">任意</span> <input type="text" name="review" value="${bookInfo.review}">
+                    </div>
+                    <div>
+                        <span>ジャンル</span><span class="care care1">任意</span> <input disabled type="text" name="genree" value="${bookInfo.genre}">
+                    </div>
+                    <span>ジャンルの選択</span> <select name="genre" value="${bookInfo.genre}">
+                        <option value="漫画">漫画</option>
+                        <option value="小説">小説</option>
+                        <option value="ビジネス">ビジネス</option>
+                        <option value="IT・コンピューター">IT・コンピューター</option>
+                         <option value="その他">その他</option>
+                    </select> <input type="hidden" id="bookId" name="bookId" value="${bookInfo.bookId}">
                 </div>
             </div>
             <div class="bookBtn_box">
