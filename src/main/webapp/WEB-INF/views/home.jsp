@@ -49,7 +49,7 @@
     <main>
         <h1>Home</h>
 <!-- ボタン -->
-<button id="drawerOpen">メニュー</button>
+<button class = "menu" id="drawerOpen">メニュー</button>
         <form action="search" method="get">
             <input type="search" name="searches" placeholder="キーワードを入力"> <input type="submit" class="btn_search" value="検索">
         </form>
