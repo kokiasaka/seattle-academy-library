@@ -1,12 +1,15 @@
 package jp.co.seattle.library.service;
 
 import java.util.List;
+import java.util.ResourceBundle;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import jp.co.seattle.library.dto.BookDetailsInfo;
 import jp.co.seattle.library.dto.BookInfo;
@@ -172,4 +175,17 @@ public class BooksService {
 		return getedBookList;
 	}
 
+
+	@Bean
+	public RestTemplate restTemplate() {
+	return new RestTemplate();
+	
 }
+
+	public String callAPI(BookDetailsInfo bookInfo) {
+		
+		ResourceBundle rb = ResourceBundle.getBundle("output");
+		String url = rb.getString ("url");
+	}
+	}
+
