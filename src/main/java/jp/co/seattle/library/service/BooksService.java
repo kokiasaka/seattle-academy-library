@@ -186,6 +186,19 @@ public class BooksService {
 		
 		ResourceBundle rb = ResourceBundle.getBundle("output");
 		String url = rb.getString ("url");
+		
+		try {
+			//API呼び出し
+			String responseMessage = restTemplate.postForObject(url,bookInfo, String.class);
+		
+			return responseMessage;
+			
+		}catch (Exception e) {
+			//TODO　自走生成された　catch　ブロック
+			e.printStackTrace();
+			return "API接続に失敗しました";
+			
+		}
 	}
 	}
 
