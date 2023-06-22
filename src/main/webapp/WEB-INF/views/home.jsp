@@ -10,7 +10,7 @@
 <link href="<c:url value="/resources/css/default.css" />" rel="stylesheet" type="text/css">
 <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 <link href="<c:url value="/resources/css/home.css" />" rel="stylesheet" type="text/css">
- <script>
+<script>
  
  modal=function(misa){ 
   const modal = document.querySelector('.js-modal');
@@ -30,9 +30,8 @@
   });
  }
  
- </script> 
+ </script>
 </head>
-
 <body class="wrapper">
     <header>
         <div class="left">
@@ -47,36 +46,40 @@
         </div>
     </header>
     <main>
-        <h1>Home</h>
-<!-- ボタン -->
-<button class = "menu" id="drawerOpen">メニュー</button>
-        <form action="search" method="get">
-            <input type="search" name="searches" placeholder="キーワードを入力"> <input type="submit" class="btn_search" value="検索">
-        </form>
-        <a href="<%=request.getContextPath()%>/addBook" class="btn_add_book">書籍の追加</a> <a href="<%=request.getContextPath()%>/sortFavorite" class="btn_add_book">お気に入り</a> <input type="button" class="btn_searched" onclick="location.href='https://www.amazon.co.jp/gp/bestsellers/books/ref=zg_bs_nav_0'" value="Amazon売れ筋ランキング">
-        <form method="GET" action="sort">
-            <p>
-                <select name="sortBook" class=btn_sort>
-                    <option value="sortASC">昇順</option>
-                    <option value="sortDESC">降順</option>
-                    <option value="sortAuthor">著者名順</option>
-                    <option value="sortPublishDate">出版日順</option>
-                </select>
-            </p>
-            <button class="btn">並び替え</button>
-        </form>
+        <h1>
+            Home
+            </h>
+            <!-- ボタン -->
+            <button class="menu" id="drawerOpen">メニュー</button>
+            <form action="search" method="get">
+                <input type="search" name="searches" placeholder="キーワードを入力"> <input type="submit" class="btn_search" value="検索">
+            </form>
+            <a href="<%=request.getContextPath()%>/addBook" class="btn_add_book">書籍の追加</a> <a href="<%=request.getContextPath()%>/sortFavorite" class="btn_add_book">お気に入り</a> <input type="button" class="btn_searched" onclick="location.href='https://www.amazon.co.jp/gp/bestsellers/books/ref=zg_bs_nav_0'" value="Amazon売れ筋ランキング">
+            <form method="GET" action="sort">
+                <p>
+                    <select name="sortBook" class=btn_sort>
+                        <option value="sortASC">昇順</option>
+                        <option value="sortDESC">降順</option>
+                        <option value="sortAuthor">著者名順</option>
+                        <option value="sortPublishDate">出版日順</option>
+                    </select>
+                </p>
+                <button class="btn">並び替え</button>
+            </form>
 </html>
- <!--ドロワ  --> 
+<!--ドロワ  -->
 <div id="mySidepanel" class="sidepanel">
-<div id="drawerClose"><span class="lineClose"></span></div>
-<nav>
-<ul class="panelInner">
-<li><a href="<%=request.getContextPath()%>/home">ホーム</a></li>
-<li><a href="http://localhost:8080/SeattleLibrary/addBook">書籍追加</a></li>
-<li><a href="http://localhost:8080/SeattleLibrary/sortFavorite">お気に入り</a></li>
-<li><a href="<%=request.getContextPath()%>/">ログアウト</a></li>
-</ul>
-</nav>
+    <div id="drawerClose">
+        <span class="lineClose"></span>
+    </div>
+    <nav>
+        <ul class="panelInner">
+            <li><a href="<%=request.getContextPath()%>/home">ホーム</a></li>
+            <li><a href="http://localhost:8080/SeattleLibrary/addBook">書籍追加</a></li>
+            <li><a href="http://localhost:8080/SeattleLibrary/sortFavorite">お気に入り</a></li>
+            <li><a href="<%=request.getContextPath()%>/">ログアウト</a></li>
+        </ul>
+    </nav>
 </div>
 <script>
 document.getElementById('drawerOpen').addEventListener('click', () => {
@@ -152,26 +155,24 @@ document.getElementById('drawerClose').addEventListener('click', () => {
                     <li class="book_publisher">出版社:${bookInfo.publisher}</li>
                     <li class="book_publish_date">出版日:${bookInfo.publishDate}</li>
                 </ul>
-                  
-                
-                <button class="button js-modal-button" value ="${bookInfo.review}" onclick="modal(this.value)">レビュー表示</button>    
+                <button class="button js-modal-button" value="${bookInfo.review}" onclick="modal(this.value)">レビュー表示</button>
                 <input type="button" class="btn_buy" onclick="location.href='https://www.amazon.co.jp/s?k=${bookInfo.title}&ref=nb_sb_noss'" value="購入">
             </div>
         </c:forEach>
-         <div class="layer js-modal">
-                    <div class="modal">
-                        <div class="modal__inner">
-                            <div class="modal__button-wrap">
-                                <button class="close-button js-close-button">
-                                    <span></span> <span></span>
-                                </button>
-                            </div>
-                            <div class="modal__contents">
-                                <div class="modal__content" id = "modal__content"></div>
-                            </div>
-                        </div>
+        <div class="layer js-modal">
+            <div class="modal">
+                <div class="modal__inner">
+                    <div class="modal__button-wrap">
+                        <button class="close-button js-close-button">
+                            <span></span> <span></span>
+                        </button>
+                    </div>
+                    <div class="modal__contents">
+                        <div class="modal__content" id="modal__content"></div>
                     </div>
                 </div>
+            </div>
+        </div>
     </div>
 </div>
 </div>

@@ -176,13 +176,15 @@ public class BooksService {
 	}
 
 
+	@Autowired
+	private RestTemplate restTemplate;
 	@Bean
 	public RestTemplate restTemplate() {
 	return new RestTemplate();
 	
 }
 
-	public String callAPI(BookDetailsInfo bookInfo) {
+		public String callAPI(BookDetailsInfo bookInfo) {
 		
 		ResourceBundle rb = ResourceBundle.getBundle("output");
 		String url = rb.getString ("url");
