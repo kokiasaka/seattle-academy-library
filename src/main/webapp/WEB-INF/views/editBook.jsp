@@ -53,6 +53,8 @@
                                 </c:forEach>
                             </div>
                         </c:if>
+                        <c:if test="${!empty successMessage}">
+                 <div class="error_msg">${successMessage}</div>
                         <span>書籍名</span><span class="care care2">必須</span> <input type="text" name="title" value="${bookInfo.title}">
                     </div>
                     <div>

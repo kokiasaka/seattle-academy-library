@@ -71,7 +71,6 @@ input[type=button] {
     text-shadow:0px 0px 3px #707070;
     border :solid 1px #707070;
     border-radius: 0.2em;
-    background: linear-gradient(to bottom, #eeeeee 0%,#eeeeee 100%);
     cursor: pointer;
 }
 /* 基本デザイン：コマンドボタン系（メイン操作） */
@@ -269,10 +268,64 @@ ul {
 
 h1 {
   padding: 0.4em 0.5em;
-  color: #707070;
+ 
   border-left: solid 5px #7db4e6;
 }
 .error_msg {
     color: red;
     font-weight: bold;
+}
+
+
+
+
+
+
+
+
+.bottone {
+ align-items: center;
+ background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+ border: 0;
+ border-radius: 8px;
+ box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+ box-sizing: border-box;
+ color: #FFFFFF;
+ display: flex;
+ font-family: Phantomsans, sans-serif;
+ font-size: 18px;
+ justify-content: center;
+ line-height: 1em;
+ max-width: 100%;
+ min-width: 140px;
+ padding: 3px;
+ text-decoration: none;
+ user-select: none;
+ -webkit-user-select: none;
+ touch-action: manipulation;
+ white-space: nowrap;
+ cursor: pointer;
+ transition: all .3s;
+}
+
+.bottone:active,
+.bottone:hover {
+ outline: 0;
+}
+
+.bottone span {
+ background-color: rgb(5, 6, 45);
+ padding: 16px 24px;
+ border-radius: 6px;
+ width: 100%;
+ height: 100%;
+ transition: 300ms;
+}
+
+.bottone:hover span {
+ background: none;
+}
+
+.bottone:active {
+ transform: scale(0.9);
 }
